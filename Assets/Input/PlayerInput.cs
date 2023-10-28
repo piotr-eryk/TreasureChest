@@ -53,6 +53,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TakingObject"",
+                    ""type"": ""Button"",
+                    ""id"": ""91f39319-04c4-4cbe-8920-35b053849df7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""MouseY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73af2713-d0c8-41dd-997f-071402dd1916"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TakingObject"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Movement_HorizontalMovement = m_Movement.FindAction("HorizontalMovement", throwIfNotFound: true);
         m_Movement_MouseX = m_Movement.FindAction("MouseX", throwIfNotFound: true);
         m_Movement_MouseY = m_Movement.FindAction("MouseY", throwIfNotFound: true);
+        m_Movement_TakingObject = m_Movement.FindAction("TakingObject", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Movement_HorizontalMovement;
     private readonly InputAction m_Movement_MouseX;
     private readonly InputAction m_Movement_MouseY;
+    private readonly InputAction m_Movement_TakingObject;
     public struct MovementActions
     {
         private @PlayerInput m_Wrapper;
@@ -212,6 +234,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @HorizontalMovement => m_Wrapper.m_Movement_HorizontalMovement;
         public InputAction @MouseX => m_Wrapper.m_Movement_MouseX;
         public InputAction @MouseY => m_Wrapper.m_Movement_MouseY;
+        public InputAction @TakingObject => m_Wrapper.m_Movement_TakingObject;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +253,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @MouseY.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouseY;
                 @MouseY.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouseY;
                 @MouseY.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMouseY;
+                @TakingObject.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnTakingObject;
+                @TakingObject.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnTakingObject;
+                @TakingObject.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnTakingObject;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +269,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @MouseY.started += instance.OnMouseY;
                 @MouseY.performed += instance.OnMouseY;
                 @MouseY.canceled += instance.OnMouseY;
+                @TakingObject.started += instance.OnTakingObject;
+                @TakingObject.performed += instance.OnTakingObject;
+                @TakingObject.canceled += instance.OnTakingObject;
             }
         }
     }
@@ -252,5 +281,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnHorizontalMovement(InputAction.CallbackContext context);
         void OnMouseX(InputAction.CallbackContext context);
         void OnMouseY(InputAction.CallbackContext context);
+        void OnTakingObject(InputAction.CallbackContext context);
     }
 }

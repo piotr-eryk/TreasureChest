@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
     private PlayerMotor playerMotor;
     [SerializeField]
     private PlayerLook playerLook;
+    [SerializeField]
+    private PlayerAction playerAction;
 
     private PlayerInput playerInput;
     private PlayerInput.MovementActions movementAction;
@@ -24,6 +26,8 @@ public class InputManager : MonoBehaviour
 
         movementAction.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         movementAction.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
+
+        movementAction.TakingObject.performed += _ => playerAction.TakeObject();
     }
 
     private void Update()
