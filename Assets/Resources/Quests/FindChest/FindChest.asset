@@ -15,6 +15,7 @@ MonoBehaviour:
   <id>k__BackingField: FindChest
   displayName: Find the chest
   questRequirements: []
+  scoreRequirement: 5
   questSteps:
   - {fileID: 761458851751247388, guid: c0e09fcfdd581ff4f8d41ecf6ceb394b, type: 3}
   pointsReward: 50
