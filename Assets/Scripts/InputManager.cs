@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
         movementAction.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         movementAction.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
 
-        movementAction.TakingObject.performed += _ => playerAction.TakeObject();
+        movementAction.TakingObject.performed += _ => playerAction.InteractWithObject();
     }
 
     private void Update()

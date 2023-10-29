@@ -9,9 +9,7 @@ public class PlayerAction : MonoBehaviour
     [SerializeField]
     private Camera playerCamera;
 
-    private QuestableObject grabbableObject;
-
-    public void TakeObject()
+    public void InteractWithObject()
     {
         if (Physics.Raycast(
             transform.position,
@@ -20,8 +18,7 @@ public class PlayerAction : MonoBehaviour
             grabbingDistance) && hit.transform.GetComponent<QuestableObject>())
 
         {
-            grabbableObject = hit.transform.GetComponent<QuestableObject>();
-            grabbableObject?.OnInteract();
+            hit.transform.GetComponent<QuestableObject>().Interact();
         }
 
     }

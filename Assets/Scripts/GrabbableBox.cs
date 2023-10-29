@@ -12,6 +12,7 @@ public class GrabbableBox : QuestableObject
     private void CollectChest()
     {
         GameEventsManager.instance.questEvents.PointsReceived(pointsForChest);
+        Destroy(gameObject);
     }
 
     public override void Interact()

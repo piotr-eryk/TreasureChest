@@ -61,7 +61,7 @@ public class QuestManager : MonoBehaviour
 
     private void PointsChange(int points)
     {
-        currentPlayerScore = points;
+        currentPlayerScore += points;
     }
 
     private bool IsRequirementMet(Quest quest)
