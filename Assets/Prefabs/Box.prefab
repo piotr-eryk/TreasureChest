@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questInfo: {fileID: 11400000, guid: a71ded768eb5d5544b4064a5e1b7cf6f, type: 2}
+  questableObject: {fileID: 1248510850692242364}
   startPoint: 0
   finishPoint: 1
 --- !u!1001 &3827786221740830555

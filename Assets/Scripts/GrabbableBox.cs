@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabbableBox : GrabbableObject
+public class GrabbableBox : QuestableObject
 {
     [SerializeField]
     private int pointsForChest = 5;

@@ -37,10 +37,4 @@ public class QuestsEvents
     {
         onQuestStateChange?.Invoke(quest);
     }
-
-    public event Action<string, int, QuestState> onQuestStepStateChange;
-    public void QuestStepStateChange(string id, int stepIndex, QuestState questStepState)
-    {
-        onQuestStepStateChange?.Invoke(id, stepIndex, questStepState);
-    }
 }

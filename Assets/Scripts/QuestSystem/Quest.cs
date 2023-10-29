@@ -17,7 +17,7 @@ public class Quest
 
     public void MoveToNextStep()
     {
-        this.currentQuestStepIndex++;
+        currentQuestStepIndex++;
     }
 
     public bool IsStepExist()
@@ -46,5 +46,16 @@ public class Quest
             Debug.LogError("Step index out of range");
         }
         return questStep;
+    }
+
+    public void InstantiateCurrentQuestStep(Transform parentTransform)
+    {
+        GameObject questStepPrefab = GetQuestStep();
+        if (questStepPrefab != null)
+        {
+            QuestStep questStep = Object.Instantiate(questStepPrefab, parentTransform)
+                .GetComponent<QuestStep>();
+            questStep.InitializeQuestStep(questInfo.id);//maybe pooling
+        }
     }
 }

@@ -9,7 +9,7 @@ public class PlayerAction : MonoBehaviour
     [SerializeField]
     private Camera playerCamera;
 
-    private GrabbableObject grabbableObject;
+    private QuestableObject grabbableObject;
 
     public void TakeObject()
     {
@@ -17,10 +17,10 @@ public class PlayerAction : MonoBehaviour
             transform.position,
             playerCamera.transform.forward,
             out RaycastHit hit,
-            grabbingDistance) && hit.transform.GetComponent<GrabbableObject>())
+            grabbingDistance) && hit.transform.GetComponent<QuestableObject>())
 
         {
-            grabbableObject = hit.transform.GetComponent<GrabbableObject>();
+            grabbableObject = hit.transform.GetComponent<QuestableObject>();
             grabbableObject?.OnInteract();
         }
 
