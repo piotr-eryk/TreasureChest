@@ -15,6 +15,12 @@ public class QuestManager : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(InitializeWithDelay());
+    }
+
+    private IEnumerator InitializeWithDelay()
+    {
+        yield return null;
         GameEventsManager.instance.questEvents.onStartQuest += StartQuest;
         GameEventsManager.instance.questEvents.onAdvanceQuest += AdvanceQuest;
         GameEventsManager.instance.questEvents.onFinishQuest += FinishQuest;
@@ -127,6 +133,7 @@ public class QuestManager : MonoBehaviour
             {
                 Debug.LogWarning("Duplicate ID found when creating quest map: " + questInfo.id);
             }
+            idToQuestMap.Add(questInfo.id, new Quest(questInfo));
         }
         return idToQuestMap;
     }

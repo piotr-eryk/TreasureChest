@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class QuestPoint : MonoBehaviour
@@ -26,17 +28,23 @@ public class QuestPoint : MonoBehaviour
 
     private void OnEnable()
     {
+        StartCoroutine(InitializeWithDelay());
+    }
+
+    private IEnumerator InitializeWithDelay()
+    {
+        yield return null;
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
-        questableObject.OnInteract += ChangeQuestState;
+        questableObject.OnInteract += StartOrFinishQuest;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
-        questableObject.OnInteract -= ChangeQuestState;
+        questableObject.OnInteract -= StartOrFinishQuest;
     }
 
-    public void ChangeQuestState()
+    public void StartOrFinishQuest()
     {
         if (currentQuestState.Equals(QuestState.CanStart) && startPoint)
         {
