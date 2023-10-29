@@ -28,12 +28,6 @@ public class QuestPoint : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(InitializeWithDelay());
-    }
-
-    private IEnumerator InitializeWithDelay()
-    {
-        yield return null;
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
         questableObject.OnInteract += StartOrFinishQuest;
     }

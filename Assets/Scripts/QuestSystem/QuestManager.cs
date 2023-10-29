@@ -15,12 +15,6 @@ public class QuestManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(InitializeWithDelay());
-    }
-
-    private IEnumerator InitializeWithDelay()
-    {
-        yield return null;
         GameEventsManager.instance.questEvents.onStartQuest += StartQuest;
         GameEventsManager.instance.questEvents.onAdvanceQuest += AdvanceQuest;
         GameEventsManager.instance.questEvents.onFinishQuest += FinishQuest;
