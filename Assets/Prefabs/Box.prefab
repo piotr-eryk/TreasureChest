@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8753672798694766912}
   - component: {fileID: 7048352055515518428}
-  - component: {fileID: 8871292332943523755}
   - component: {fileID: 1248510850692242364}
+  - component: {fileID: 7354734199732476429}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -49,18 +49,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8871292332943523755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8944796241956709764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86fc8e02b6436643b745eaaa29bca3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1248510850692242364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,8 +61,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 382246e1d838fb645b58ab787565b944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTimeSeconds: 8
-  goldGained: 1
+  pointsForChest: 5
+  questPoint: {fileID: 0}
+--- !u!114 &7354734199732476429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944796241956709764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d7126847449b4419a8b4f57e368fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questInfo: {fileID: 11400000, guid: a71ded768eb5d5544b4064a5e1b7cf6f, type: 2}
+  startPoint: 0
+  finishPoint: 1
 --- !u!1001 &3827786221740830555
 PrefabInstance:
   m_ObjectHideFlags: 0

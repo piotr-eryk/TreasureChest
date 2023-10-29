@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class GrabbableBox : GrabbableObject
 {
-    [Header("Config")]
-    [SerializeField] private float respawnTimeSeconds = 8;
-    [SerializeField] private int goldGained = 1;
+    [SerializeField]
+    private int pointsForChest = 5;
+    [SerializeField] 
+    private QuestPoint questPoint;
 
     private void CollectChest()
     {
-      //  GameEventsManager.instance.goldEvents.GoldGained(goldGained);
-      //  GameEventsManager.instance.miscEvents.CoinCollected();
+        GameEventsManager.instance.questEvents.PointsReceived(pointsForChest);
     }
 
-    private void OnTriggerEnter2D(Collider2D otherCollider)
+    public override void Interact()
     {
-        if (otherCollider.CompareTag("Player"))
-        {
-            CollectChest();
-        }
+        base.Interact();
+        CollectChest();
     }
 }

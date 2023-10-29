@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class GrabbableObject : MonoBehaviour, IGrabbable
+public class GrabbableObject : MonoBehaviour, IQuestable
 {
-    public void GrabObject()
+    public Action OnInteract { get; set; }
+
+    public virtual void Interact()
     {
-        gameObject.SetActive(false);//back to pool
+        OnInteract?.Invoke();
     }
 }

@@ -6,7 +6,6 @@ public class GameEventsManager : MonoBehaviour
 {
     public static GameEventsManager instance { get; private set; }
 
-    //public InputEvents inputEvents;
     public QuestsEvents questEvents;
 
     private void Awake()
@@ -17,7 +16,6 @@ public class GameEventsManager : MonoBehaviour
         }
         instance = this;
 
-        //inputEvents = new InputEvents();
         questEvents = new QuestsEvents();
     }
 }

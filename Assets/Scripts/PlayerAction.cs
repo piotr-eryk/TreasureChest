@@ -21,7 +21,7 @@ public class PlayerAction : MonoBehaviour
 
         {
             grabbableObject = hit.transform.GetComponent<GrabbableObject>();
-            grabbableObject?.GrabObject();
+            grabbableObject?.OnInteract();
         }
 
     }
