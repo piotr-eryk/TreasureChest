@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public interface IQuestable
+public interface IGrabbable
 {
     Action OnInteract { get; set; }
 }

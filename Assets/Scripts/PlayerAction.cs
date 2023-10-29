@@ -15,10 +15,10 @@ public class PlayerAction : MonoBehaviour
             transform.position,
             playerCamera.transform.forward,
             out RaycastHit hit,
-            grabbingDistance) && hit.transform.GetComponent<QuestableObject>())
+            grabbingDistance) && hit.transform.GetComponent<GrabbableObject>())
 
         {
-            hit.transform.GetComponent<QuestableObject>().Interact();
+            hit.transform.GetComponent<GrabbableObject>().Interact();
         }
 
     }

@@ -10,7 +10,7 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] 
     private QuestInfo questInfo;
     [SerializeField] 
-    private QuestableObject questableObject;
+    private GrabbableObject questableObject;
 
     [Header("Config")]
     [SerializeField] 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class QuestableObject : MonoBehaviour, IQuestable
+public class GrabbableObject : MonoBehaviour, IGrabbable
 {
     public Action OnInteract { get; set; }
 

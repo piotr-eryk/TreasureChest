@@ -211,5 +211,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5a8e9e97f788740be70e9bf91f75cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbingDistance: 3
+  grabbingDistance: 5
   playerCamera: {fileID: 7159491651750485837}

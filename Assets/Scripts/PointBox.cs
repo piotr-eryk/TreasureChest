@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabbableBox : QuestableObject
+public class PointBox : GrabbableObject
 {
     [SerializeField]
     private int pointsForChest = 5;
-    [SerializeField] 
-    private QuestPoint questPoint;
 
     private void CollectChest()
     {
-        GameEventsManager.instance.questEvents.ChestCollected();
         GameEventsManager.instance.questEvents.PointsReceived(pointsForChest);
         Destroy(gameObject);
     }
