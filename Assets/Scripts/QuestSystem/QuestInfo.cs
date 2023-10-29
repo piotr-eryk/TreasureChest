@@ -10,6 +10,7 @@ public class QuestInfo : ScriptableObject
 
     public string displayName;
     public List<QuestInfo> questRequirements;
+    public int scoreRequirement;
     public List<GameObject> questSteps;
     public int pointsReward;
 }

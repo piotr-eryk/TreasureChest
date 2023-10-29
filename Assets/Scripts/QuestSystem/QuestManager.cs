@@ -6,6 +6,8 @@ public class QuestManager : MonoBehaviour
 {
     private Dictionary<string, Quest> questMap;
 
+    private int currentPlayerScore;
+
     private void Awake()
     {
         questMap = CreateQuestMap();
@@ -16,6 +18,7 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.instance.questEvents.onStartQuest += StartQuest;
         GameEventsManager.instance.questEvents.onAdvanceQuest += AdvanceQuest;
         GameEventsManager.instance.questEvents.onFinishQuest += FinishQuest;
+        GameEventsManager.instance.questEvents.onPointsReceived += PointsChange;
     }
 
     private void OnDisable()
@@ -23,6 +26,7 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.instance.questEvents.onStartQuest -= StartQuest;
         GameEventsManager.instance.questEvents.onAdvanceQuest -= AdvanceQuest;
         GameEventsManager.instance.questEvents.onFinishQuest -= FinishQuest;
+        GameEventsManager.instance.questEvents.onPointsReceived -= PointsChange;
     }
 
     private void Start()
@@ -37,27 +41,6 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    private void ChangeQuestState(string id, QuestState state)
-    {
-        Quest quest = GetQuestById(id);
-        quest.questState = state;
-        GameEventsManager.instance.questEvents.QuestStateChange(quest);
-    }
-
-    private bool IsRequirementMet(Quest quest)
-    {
-        bool meetsRequirements = true;
-
-        foreach (QuestInfo prerequisiteQuestInfo in quest.questInfo.questRequirements)
-        {
-            if (GetQuestById(prerequisiteQuestInfo.id).questState != QuestState.Finished)
-            {
-                meetsRequirements = false;
-            }
-        }
-        return meetsRequirements;
-    }
-
     private void Update()
     {
         foreach (Quest quest in questMap.Values)
@@ -67,6 +50,37 @@ public class QuestManager : MonoBehaviour
                 ChangeQuestState(quest.questInfo.id, QuestState.CanStart);
             }
         }
+    }
+
+    private void ChangeQuestState(string id, QuestState state)
+    {
+        Quest quest = GetQuestById(id);
+        quest.questState = state;
+        GameEventsManager.instance.questEvents.QuestStateChange(quest);
+    }
+
+    private void PointsChange(int points)
+    {
+        currentPlayerScore = points;
+    }
+
+    private bool IsRequirementMet(Quest quest)
+    {
+        bool meetsRequirements = true;
+
+        if (currentPlayerScore < quest.questInfo.scoreRequirement)
+        {
+            meetsRequirements = false;
+        }
+
+        foreach (QuestInfo prerequisiteQuestInfo in quest.questInfo.questRequirements)
+        {
+            if (GetQuestById(prerequisiteQuestInfo.id).questState != QuestState.Finished)
+            {
+                meetsRequirements = false;
+            }
+        }
+        return meetsRequirements;
     }
 
     private void StartQuest(string id)

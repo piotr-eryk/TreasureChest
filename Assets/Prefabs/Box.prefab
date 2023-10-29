@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsForChest: 5
-  questPoint: {fileID: 0}
+  questPoint: {fileID: 7354734199732476429}
 --- !u!114 &7354734199732476429
 MonoBehaviour:
   m_ObjectHideFlags: 0
