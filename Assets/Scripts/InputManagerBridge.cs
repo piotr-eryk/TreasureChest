@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public class InputManagerBridge : MonoBehaviour
 {
     [SerializeField]
     private PlayerMotor playerMotor;
@@ -27,7 +26,7 @@ public class InputManager : MonoBehaviour
         movementAction.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         movementAction.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
 
-        movementAction.TakingObject.performed += _ => playerAction.InteractWithObject();
+        movementAction.TakingObject.performed += _ => InteractPressed();
     }
 
     private void Update()
@@ -44,5 +43,10 @@ public class InputManager : MonoBehaviour
     private void OnDisable()
     {
         playerInput.Disable();
+    }
+
+    public void InteractPressed()
+    {
+        GameEventsManager.instance.inputEvents.InteractPressed();
     }
 }

@@ -9,6 +9,11 @@ public class PlayerAction : MonoBehaviour
     [SerializeField]
     private Camera playerCamera;
 
+    private void Awake()
+    {
+        GameEventsManager.instance.inputEvents.onInteractPressed += InteractWithObject;
+    }
+
     public void InteractWithObject()
     {
         if (Physics.Raycast(

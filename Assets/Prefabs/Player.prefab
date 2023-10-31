@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.818, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7159491652854140637}
   m_RootOrder: 0
@@ -95,9 +96,9 @@ GameObject:
   - component: {fileID: -3758977029240376059}
   - component: {fileID: 7159491652854140633}
   - component: {fileID: 2725325942320855199}
-  - component: {fileID: 2843578551442855445}
   - component: {fileID: 5222679340357849399}
   - component: {fileID: 8862217169410219584}
+  - component: {fileID: 6954174261018920525}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -112,9 +113,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7159491652854140625}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7159491651750485836}
   m_Father: {fileID: 0}
@@ -169,21 +171,6 @@ MonoBehaviour:
   controller: {fileID: 7159491652854140633}
   speed: 12
   gravity: -30
---- !u!114 &2843578551442855445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7159491652854140625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18895d2d201113b429b7d1aa38fa3266, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMotor: {fileID: 2725325942320855199}
-  playerLook: {fileID: 5222679340357849399}
-  playerAction: {fileID: 8862217169410219584}
 --- !u!114 &5222679340357849399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,3 +200,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabbingDistance: 5
   playerCamera: {fileID: 7159491651750485837}
+--- !u!114 &6954174261018920525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7159491652854140625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7234e73ffc39cf547be3929c77cbe4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMotor: {fileID: 2725325942320855199}
+  playerLook: {fileID: 5222679340357849399}
+  playerAction: {fileID: 8862217169410219584}

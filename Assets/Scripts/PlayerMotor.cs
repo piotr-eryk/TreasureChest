@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private CharacterController controller;
-    [SerializeField] 
+    [SerializeField]
     private float speed = 11f;
-    [SerializeField] 
+    [SerializeField]
     private float gravity = -30f; // -9.81
 
     private Vector3 verticalVelocity = Vector3.zero;
@@ -17,6 +17,7 @@ public class PlayerMotor : MonoBehaviour
     private void Update()
     {
         Vector3 horizontalVelocity = (transform.right * horizontalInput.x + transform.forward * horizontalInput.y) * speed;
+
         controller.Move(horizontalVelocity * Time.deltaTime);
 
         verticalVelocity.y += gravity * Time.deltaTime;
