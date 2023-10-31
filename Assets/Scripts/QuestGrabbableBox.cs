@@ -7,7 +7,6 @@ public class QuestGrabbableBox : GrabbableObject
     private void CollectBox()
     {
         GameEventsManager.instance.questEvents.ChestCollected();
-       // Destroy(gameObject);
     }
 
     public override void Interact(GameObject interactedObject)

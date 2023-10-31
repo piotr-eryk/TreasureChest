@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public abstract class QuestStep : MonoBehaviour
 {
+    public Action<QuestStep> OnFinishStep { get; set; }
+
     private bool isFinished = false;
     private string questId;
 
@@ -13,7 +17,7 @@ public abstract class QuestStep : MonoBehaviour
         {
             isFinished = true;
             GameEventsManager.instance.questEvents.AdvanceQuest(questId);
-            Destroy(gameObject);
+            OnFinishStep?.Invoke(this);
         }
     }
 

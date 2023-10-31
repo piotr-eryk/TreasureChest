@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Quest
 {
     public QuestInfo questInfo;
     public QuestState questState;
     private int currentQuestStepIndex;
+
+    public ObjectPool<GameObject> questStepPool;
 
     public Quest(QuestInfo questInfo)
     {
@@ -28,12 +31,22 @@ public class Quest
     public void CreateQuestStep(Transform parentTransform)
     {
         GameObject questStepPrefab = GetQuestStep();
+
         if (questStepPrefab != null)
         {
-            QuestStep questStep = Object.Instantiate(questStepPrefab, parentTransform)
-    .GetComponent<QuestStep>();
-            questStep.InitializeQuestStep(questInfo.id);//maybe pooling
+            questStepPool = new ObjectPool<GameObject>(createFunc: () => Object.Instantiate(questStepPrefab, parentTransform),
+actionOnGet: (obj) => obj.SetActive(true), actionOnRelease: (obj) => obj.SetActive(false), collectionCheck: false);
+
+            QuestStep questStep = questStepPool.Get().GetComponent<QuestStep>();
+            questStep.InitializeQuestStep(questInfo.id);
+            questStep.OnFinishStep += ReturnToPool;
         }
+    }
+
+    private void ReturnToPool(QuestStep questStep)
+    {
+        questStep.OnFinishStep -= ReturnToPool;
+        questStepPool.Release(questStep.gameObject);
     }
 
     private GameObject GetQuestStep()
