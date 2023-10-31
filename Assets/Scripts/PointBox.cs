@@ -10,12 +10,11 @@ public class PointBox : GrabbableObject
     private void CollectChest()
     {
         GameEventsManager.instance.questEvents.PointsReceived(pointsForChest);
-        Destroy(gameObject);
     }
 
-    public override void Interact()
+    public override void Interact(GameObject interactedObject)
     {
-        base.Interact();
+        base.Interact(interactedObject);
         CollectChest();
     }
 }

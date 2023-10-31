@@ -18,7 +18,8 @@ public class PlayerAction : MonoBehaviour
             grabbingDistance) && hit.transform.GetComponent<GrabbableObject>())
 
         {
-            hit.transform.GetComponent<GrabbableObject>().Interact();
+            var interactedObject = hit.transform.GetComponent<GrabbableObject>();
+            interactedObject.Interact(interactedObject.gameObject);
         }
 
     }

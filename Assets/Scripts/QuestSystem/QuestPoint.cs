@@ -17,6 +17,8 @@ public class QuestPoint : MonoBehaviour
     private bool startPoint = true;
     [SerializeField] 
     private bool finishPoint = true;
+    [SerializeField]
+    private bool destroyAfterInteract = true;
 
     private string questId;
     private QuestState currentQuestState;
@@ -38,7 +40,7 @@ public class QuestPoint : MonoBehaviour
         questableObject.OnInteract -= StartOrFinishQuest;
     }
 
-    public void StartOrFinishQuest()
+    public void StartOrFinishQuest(GameObject interactedObject)
     {
         if (currentQuestState.Equals(QuestState.CanStart) && startPoint)
         {
@@ -48,6 +50,8 @@ public class QuestPoint : MonoBehaviour
         {
             GameEventsManager.instance.questEvents.FinishQuest(questId);
         }
+
+        interactedObject.SetActive(!destroyAfterInteract);
     }
 
     private void QuestStateChange(Quest quest)

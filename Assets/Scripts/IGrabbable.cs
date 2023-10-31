@@ -6,5 +6,5 @@ using UnityEngine.Events;
 
 public interface IGrabbable
 {
-    Action OnInteract { get; set; }
+    Action <GameObject> OnInteract { get; set; }
 }

@@ -10,10 +10,10 @@ public class QuestGrabbableBox : GrabbableObject
        // Destroy(gameObject);
     }
 
-    public override void Interact()
+    public override void Interact(GameObject interactedObject)
     {
         CollectBox();
-        base.Interact();
+        base.Interact(interactedObject);
 
     }
 }

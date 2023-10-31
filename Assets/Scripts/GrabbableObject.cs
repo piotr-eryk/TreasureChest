@@ -6,10 +6,10 @@ using UnityEngine.Events;
 
 public class GrabbableObject : MonoBehaviour, IGrabbable
 {
-    public Action OnInteract { get; set; }
+    public Action <GameObject> OnInteract { get; set; }
 
-    public virtual void Interact()
+    public virtual void Interact(GameObject interactedObject)
     {
-        OnInteract?.Invoke();
+        OnInteract?.Invoke(interactedObject);
     }
 }
