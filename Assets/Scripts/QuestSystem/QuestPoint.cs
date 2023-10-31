@@ -18,7 +18,7 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] 
     private bool finishPoint = true;
     [SerializeField]
-    private bool destroyAfterInteract = true;
+    private bool disableAfterInteract = true;
 
     private string questId;
     private QuestState currentQuestState;
@@ -51,7 +51,7 @@ public class QuestPoint : MonoBehaviour
             GameEventsManager.instance.questEvents.FinishQuest(questId);
         }
 
-        interactedObject.SetActive(!destroyAfterInteract);
+        interactedObject.SetActive(!disableAfterInteract);
     }
 
     private void QuestStateChange(Quest quest)
