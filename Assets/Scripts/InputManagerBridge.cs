@@ -32,7 +32,7 @@ public class InputManagerBridge : MonoBehaviour
 
     private void Update()
     {
-        playerMotor.ReceiveInput(horizontalInput);
+        playerMotor.PlayerMove(horizontalInput);
         playerLook.ReceiveInput(mouseInput);
     }
 
