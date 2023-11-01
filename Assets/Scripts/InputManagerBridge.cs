@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManagerBridge : MonoBehaviour
 {
@@ -21,12 +22,12 @@ public class InputManagerBridge : MonoBehaviour
         playerInput = new PlayerInput();
         movementAction = playerInput.Movement;
 
-        movementAction.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
+        movementAction.HorizontalMovement.performed += ReadMovementValue;
 
-        movementAction.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
-        movementAction.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
+        movementAction.MouseX.performed += ReadMouseXValue;
+        movementAction.MouseY.performed += ReadMouseYValue;
 
-        movementAction.TakingObject.performed += _ => InteractPressed();
+        movementAction.TakingObject.performed += InteractPressed;
     }
 
     private void Update()
@@ -45,8 +46,33 @@ public class InputManagerBridge : MonoBehaviour
         playerInput.Disable();
     }
 
-    public void InteractPressed()
+    private void OnDestroy()
+    {
+        movementAction.HorizontalMovement.performed -= ReadMovementValue;
+
+        movementAction.MouseX.performed -= ReadMouseXValue;
+        movementAction.MouseY.performed -= ReadMouseYValue;
+
+        movementAction.TakingObject.performed -= InteractPressed;
+    }
+
+    public void InteractPressed(InputAction.CallbackContext _)
     {
         GameEventsManager.instance.inputEvents.InteractPressed();
+    }
+
+    public void ReadMovementValue(InputAction.CallbackContext ctx)
+    {
+        horizontalInput = ctx.ReadValue<Vector2>();
+    }
+
+    public void ReadMouseXValue(InputAction.CallbackContext ctx)
+    {
+        mouseInput.x = ctx.ReadValue<float>();
+    }
+
+    public void ReadMouseYValue(InputAction.CallbackContext ctx)
+    {
+        mouseInput.y = ctx.ReadValue<float>();
     }
 }
