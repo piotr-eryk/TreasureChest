@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GrabbableObject : MonoBehaviour, IGrabbable
+public abstract class GrabbableObject : MonoBehaviour, IGrabbable
 {
     public Action <GameObject> OnInteract { get; set; }
 

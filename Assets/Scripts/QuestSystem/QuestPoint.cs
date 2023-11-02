@@ -10,7 +10,7 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] 
     private QuestInfo questInfo;
     [SerializeField] 
-    private GrabbableObject questableObject;
+    private GrabbableObject grabbableObject;
 
     [Header("Config")]
     [SerializeField] 
@@ -31,13 +31,13 @@ public class QuestPoint : MonoBehaviour
     private void OnEnable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange += QuestStateChange;
-        questableObject.OnInteract += StartOrFinishQuest;
+        grabbableObject.OnInteract += StartOrFinishQuest;
     }
 
     private void OnDisable()
     {
         GameEventsManager.instance.questEvents.onQuestStateChange -= QuestStateChange;
-        questableObject.OnInteract -= StartOrFinishQuest;
+        grabbableObject.OnInteract -= StartOrFinishQuest;
     }
 
     public void StartOrFinishQuest(GameObject interactedObject)
