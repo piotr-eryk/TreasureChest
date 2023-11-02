@@ -39,13 +39,13 @@ actionOnGet: (obj) => obj.SetActive(true), actionOnRelease: (obj) => obj.SetActi
 
             QuestStep questStep = questStepPool.Get().GetComponent<QuestStep>();
             questStep.InitializeQuestStep(questInfo.id);
-            questStep.OnFinishStep += ReturnToPool;
+            GameEventsManager.instance.questEvents.onFinishStep += ReturnToPool;
         }
     }
 
     private void ReturnToPool(QuestStep questStep)
     {
-        questStep.OnFinishStep -= ReturnToPool;
+        GameEventsManager.instance.questEvents.onFinishStep -= ReturnToPool;
         questStepPool.Release(questStep.gameObject);
     }
 

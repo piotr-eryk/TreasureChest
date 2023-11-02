@@ -38,4 +38,10 @@ public class QuestsEvents
     {
         onQuestStateChange?.Invoke(quest);
     }
+
+    public event Action<QuestStep> onFinishStep;
+    public void FinishStep(QuestStep questStep)
+    {
+        onFinishStep?.Invoke(questStep);
+    }
 }
