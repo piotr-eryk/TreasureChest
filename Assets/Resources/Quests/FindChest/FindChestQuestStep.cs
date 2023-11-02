@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FindChestQuestStep : QuestStep
 {
-    private bool chestFound = false;
-
     private void OnEnable()
     {
         GameEventsManager.instance.questEvents.onChestCollected += ChestCollected;
