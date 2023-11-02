@@ -8,7 +8,6 @@ public class QuestInfo : ScriptableObject
     [field: SerializeField]
     public string id { get; private set; }
 
-    public string displayName;
     public List<QuestInfo> questRequirements;
     public int scoreRequirement;
     public List<GameObject> questSteps;
